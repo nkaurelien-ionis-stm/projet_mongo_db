@@ -1,0 +1,11 @@
+{
+  "name": "NosqlMongoDb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nkaurelien-ionis-stm/projet_mongo_db.git",
+  "author": "Developer SDP - Aurelien Nkumbe <contact@smartdatapay.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "streamlit run src/streamlitapp.py"
+  }
+}

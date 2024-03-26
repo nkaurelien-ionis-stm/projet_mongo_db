@@ -8,47 +8,45 @@ Install python virtual env
 pip install --upgrade pip
 sudo apt install python3-virtualenv
 pip install --upgrade virtualenv
-virtualenv -p python3 venv
-chmod +x venv/bin/activate
 ```
+
+# Create virtual Env
 
 Install python lib
 
-```console
-pip install -r src/requirements.txt
+```shell
+virtualenv -p python3 venv
+chmod +x venv/bin/activate
+```
+Install python lib
+
+```shell
+pip install -r requirements.txt
 ```
 
 # RUN
 
-
 Activate python venv
-```console
+```shell
 source ./venv/bin/activate
 ```
 
 
 ### Import dataset to mongoDb 
-```console
+```shell
 python src/utils/import_mongodb.py 
 ```
 
-
 ### Import dataset to Elasticseacrh 
-```console
+```shell
 python src/utils/import_es.py 
 ```
 
 
-Run app
+# Run app
 
-```console
-python src/main.py 
-```
+```shell
 
-## generate website a partir des PDF disponibles
-
-```console
-python src/website/app.py 
 ```
 
 
