@@ -1,0 +1,12 @@
+{
+  "mappings": {
+      "properties": {
+          "id":  {"type": "long"},
+          "name":  {"type": "text"},
+          "username":  {"type": "text"},
+          "email":  {"type": "text"},
+          "address":  {"type": "text"},
+          "geo_point_2d":  {"type": "geo_point"},
+      }
+  }
+}

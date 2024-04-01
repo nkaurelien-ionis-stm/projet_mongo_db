@@ -24,6 +24,7 @@ for item in data:
 
         # Transformer et importer les données
         document = {
+            "code_uic": item["code_uic"],
             "libelle": item["libelle"],
             "commune": item["commune"],
             "departemen": item["departemen"],

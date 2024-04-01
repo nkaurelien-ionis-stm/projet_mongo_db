@@ -11,3 +11,4 @@ streamlit-folium
 streamlit-keyup>=0.1.9
 streamlit-aggrid
 # jinja2
+python-dotenv

@@ -39,7 +39,8 @@ python src/utils/import_mongodb.py
 
 ### Import dataset to Elasticseacrh 
 ```shell
-python src/utils/import_es.py 
+python src/utils/import_es_gares.py 
+python src/utils/import_es_users.py 
 ```
 
 

@@ -1,0 +1,11 @@
+{
+    "mappings": {
+      "properties": {
+        "code_uic": { "type": "long" },
+        "libelle": { "type": "text" },
+        "commune": { "type": "text" },
+        "departemen": { "type": "text" },
+        "geo_point_2d": { "type": "geo_point" }
+      }
+    }
+  } 
