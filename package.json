@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/nkaurelien-ionis-stm/projet_mongo_db.git",
-  "author": "Developer SDP - Aurelien Nkumbe <contact@smartdatapay.com>",
+  "author": "Aurelien Nkumbe <nkaurelien@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "deploy": "npm run importdb; npm run createsearchindex",
     "start": "streamlit run src/streamlitappuser.py",
     "start2": "streamlit run src/streamlitappsncf.py",
     "importdb": "python src/utils/import_mongodb.py",

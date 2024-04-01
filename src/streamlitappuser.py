@@ -9,6 +9,9 @@ es.index_name = "users"
 
 columns = ["Nom", "Username", "Adresss" , "Latitude", "Longitude" ]
 
+start_lat=24.8918
+start_lng=21.8984
+
 @st.cache_data
 def get_data() -> pd.DataFrame:
     (users, total) = es.get_all_data()
@@ -28,14 +31,13 @@ def get_data() -> pd.DataFrame:
     return (df, total)
 
 
-
 # Titre de l'application
-st.title('Recherche Géographique dans Elasticsearch')
+st.title('Recherche Géographique')
 
 # Formulaire de recherche géographique
 with st.form(key='search_geo'):
-    lat = st.number_input('Latitude', value=24.8918)  # Valeur par défaut pour Kurtis Elwyn
-    lon = st.number_input('Longitude', value=21.8984)  # Valeur par défaut pour Kurtis Elwyn
+    lat = st.number_input('Latitude', value=start_lat)  # Valeur par défaut pour Kurtis Elwyn
+    lon = st.number_input('Longitude', value=start_lng)  # Valeur par défaut pour Kurtis Elwyn
     rayon = st.number_input('Rayon (km)', value=10000)
     submit_button = st.form_submit_button(label='Rechercher')
 
@@ -48,15 +50,17 @@ if submit_button:
     (users, total) = es.geo_search(str(lat), str(lon), str(rayon)+"km")
 
     data = []
+    
 
     for hit in users:
         source = hit["_source"]
-        data.append([source["name"], source["username"], source["address"], source["geo_point_2d"]["lat"],
-                        source["geo_point_2d"]["lon"]])
+        data.append([source["name"], source["username"], source["address"], float(source["geo_point_2d"]["lat"]),
+                        float(source["geo_point_2d"]["lon"])])
+        
 
     if data:
         results_placeholder.write(
-            "### Resulat de la recherche: \nNombre d'utilisateurs trouvées sur {}km: {} / {} ".format(str(rayon), str(len(data)), str(total)))
+            "### Resultat de la recherche: \nNombre d'utilisateurs trouvées sur {}km: {} / {} ".format(str(rayon), str(len(data)), str(total)))
 
         # Affichage du tableau de resultats
         df = pd.DataFrame(data, columns=columns)
@@ -64,8 +68,9 @@ if submit_button:
 
         df_lat_lon = df[["Latitude", "Longitude"]]
 
-        # Affichage de la carte avec les résultats
+        # # Affichage de la carte avec les résultats
         st.map(df, latitude='Latitude', longitude='Longitude')
+        
 
     else:
         results_placeholder.write("Aucun résultat trouvé.")

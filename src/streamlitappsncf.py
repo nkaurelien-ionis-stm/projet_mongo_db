@@ -28,7 +28,7 @@ def get_data() -> pd.DataFrame:
 
 
 # Titre de l'application
-st.title('Recherche Géographique dans Elasticsearch')
+st.title('Recherche Géographique')
 
 # Formulaire de recherche géographique
 with st.form(key='search_geo'):
@@ -49,12 +49,12 @@ if submit_button:
 
     for hit in gares:
         source = hit["_source"]
-        data.append([source["libelle"], source["commune"], source["departemen"], source["geo_point_2d"]["lat"],
-                     source["geo_point_2d"]["lon"]])
+        data.append([source["libelle"], source["commune"], source["departemen"], float(source["geo_point_2d"]["lat"]),
+                     float(source["geo_point_2d"]["lon"])])
 
     if data:
         results_placeholder.write(
-            "### Resulat de la recherche: \nNombre de gares trouvées sur {}km: {} / {} ".format(str(rayon), str(len(data)), str(total)))
+            "### Resultat de la recherche: \nNombre de gares trouvées sur {}km: {} / {} ".format(str(rayon), str(len(data)), str(total)))
 
         # Affichage du tableau de resultats
         df = pd.DataFrame(data, columns=["Libellé", "Commune", "Département", "Latitude", "Longitude"])

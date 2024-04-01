@@ -16,9 +16,10 @@ def transform_data(document, index_name):
     elif index_name == 'users' :
          transformed_document = {
             "id": document["id"],
-            "name": document["name"],
-            "username": document["username"],
-            "address": "{}, {} {}".format(document["address"]["street"], document["address"]["zipcode"], document["address"]["city"]),
+            "name": "{} {}".format(document["firstname"], document["lastname"]),
+            "username": document["login"]["username"],
+            "birthDate": document["birthDate"],
+            "address": "{}, {} {}\n{}".format(document["address"]["street"], document["address"]["zipcode"], document["address"]["city"],  document["address"]["suite"]),
             "geo_point_2d": {"lat": document["address"]["geo"]["lat"], "lon": document["address"]["geo"]["lng"]}
         }
 
