@@ -5,6 +5,8 @@ from utils.es import Search
 
 es = Search()
 
+es.index_name = "gares"
+
 @st.cache_data
 def get_data() -> pd.DataFrame:
     (gares, total) = es.get_all_data()

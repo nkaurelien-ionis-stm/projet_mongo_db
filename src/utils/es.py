@@ -1,13 +1,21 @@
 from elasticsearch import Elasticsearch
+import os
+import json
+from dotenv import load_dotenv
 
-server_name = "18.199.81.38"
-server_port = "9200"
-index_name = "gares-voyageurs-sncf"
+load_dotenv() 
+
+
+server_name=os.environ["ES_SERVER_NAME"]
+server_port=os.environ["ES_SERVER_PORT"]
+
 
 # Connexion à Elasticsearch
 es = Elasticsearch(f"http://{server_name}:{server_port}")
 
 class Search:
+
+  index_name = ""
 
   def geo_search(self, lat: str, lng: str, rayon: str):
     # Définition du point central de recherche et du rayon
@@ -32,12 +40,7 @@ class Search:
     }
 
     # Exécution de la requête dans l'index spécifié
-    resultats = es.search(index=index_name, body=requete)
-
-    # Affichage des résultats
-    # print("Nombre de gares trouvées:", resultats['hits']['total']['value'])
-    for gare in resultats['hits']['hits']:
-      print(gare["_source"]["libelle"], "à", rayon, "km")
+    resultats = es.search(index=self.index_name, body=requete)
 
     return (resultats['hits']['hits'], resultats['hits']['total']['value'])
 
@@ -48,7 +51,7 @@ class Search:
         "match_all": {}
       }
     }
-    resultats = es.search(index=index_name, body=requete)
+    resultats = es.search(index=self.index_name, body=requete)
 
     return (resultats['hits']['hits'], resultats['hits']['total']['value'])
 
@@ -56,7 +59,7 @@ class Search:
   def insert_documents(self, documents):
     operations = []
     for document in documents:
-      operations.append({'index': {'_index': 'my_documents'}})
+      operations.append({'index': {'_index': self.index_name}})
       operations.append(document)
     return self.es.bulk(operations=operations)
 

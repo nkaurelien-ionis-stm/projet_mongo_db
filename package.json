@@ -6,6 +6,9 @@
   "author": "Developer SDP - Aurelien Nkumbe <contact@smartdatapay.com>",
   "license": "MIT",
   "scripts": {
-    "start": "streamlit run src/streamlitapp.py"
+    "start": "streamlit run src/streamlitappuser.py",
+    "start2": "streamlit run src/streamlitappsncf.py",
+    "importdb": "python src/utils/import_mongodb.py",
+    "createsearchindex": "python src/utils/create_search_index.py"
   }
 }
