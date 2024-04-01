@@ -1,4 +1,5 @@
 
+
 # Projet
 
 Le projet vise à développer une application qui répond aux besoins suivants :
@@ -60,3 +61,7 @@ streamlit run src/streamlitappuser.py
 
 # Capture
 ![screencapture-localhost-8501-2024-04-01-20_30_45.png](screencapture-localhost-8501-2024-04-01-20_30_45.png)
+
+
+[![Buy a coffe](donate.png)](https://www.paypal.com/donate/?hosted_button_id=FSXZJUZCHWG5N)
+
