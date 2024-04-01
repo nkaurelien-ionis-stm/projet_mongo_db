@@ -63,5 +63,5 @@ streamlit run src/streamlitappuser.py
 ![screencapture-localhost-8501-2024-04-01-20_30_45.png](screencapture-localhost-8501-2024-04-01-20_30_45.png)
 
 
-[![Buy a coffe](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.paypal.com/donate/?hosted_button_id=FSXZJUZCHWG5N)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.paypal.com/donate/?hosted_button_id=FSXZJUZCHWG5N)
 
