@@ -31,7 +31,7 @@ def get_data() -> pd.DataFrame:
         
         # documents = mongodb.query_by_ids( ids=ids) 
         # for doc in documents:
-        #     # print(doc) 
+        # print(doc) 
         
         for hit in users:
             source = hit["_source"]
