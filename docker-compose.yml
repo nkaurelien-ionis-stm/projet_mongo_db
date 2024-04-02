@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  streamlit-app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    # environment:
+    #   - MONGO_DB_URL=
+    #   - MONGO_DB_DATABASE=
+    #   - ES_SERVER_NAME=
+    #   - ES_SERVER_PORT=9200
+    env_file:
+      - .env  # Specifies the .env file to use

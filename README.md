@@ -57,6 +57,8 @@ python src/utils/create_search_index.py
 yarn start
 # or
 streamlit run src/streamlitappuser.py
+# or
+docker-compose up --build
 ```
 
 # Capture
