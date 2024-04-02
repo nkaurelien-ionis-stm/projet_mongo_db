@@ -2,27 +2,43 @@ import streamlit as st
 import pandas as pd
 from st_aggrid import AgGrid
 from utils.es import Search
-
+from utils.mongo import MongoDb
+ 
 es = Search()
-
 es.index_name = "users"
 
-columns = ["Nom", "Username", "Adresss" , "Latitude", "Longitude" ]
+mongodb = MongoDb()
+mongodb.collection_name = es.index_name
+    
+columns = ["Nom", "Username", "Address" , "Latitude", "Longitude" ]
 
 start_lat=24.8918
 start_lng=21.8984
 
+
+
 @st.cache_data
 def get_data() -> pd.DataFrame:
     (users, total) = es.get_all_data()
-    print(users)
+    # print(users)
     data = []
 
     df = pd.DataFrame(data, columns=columns)
 
     if users:
+        
+        ids = [doc["_source"]['id'] for doc in users]
+        
+        # documents = mongodb.query_by_ids( ids=ids) 
+        # for doc in documents:
+        #     # print(doc) 
+        
         for hit in users:
             source = hit["_source"]
+            
+            # doc = mongodb.query_by_field('id', source['id']) 
+            # print(doc, '\n') 
+            
             data.append([source["name"], source["username"], source["address"], source["geo_point_2d"]["lat"],
                          source["geo_point_2d"]["lon"]])
         if data:
