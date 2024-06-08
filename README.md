@@ -1,6 +1,6 @@
 
 
-# Projet
+# Projet No SQL
 
 Le projet vise à développer une application qui répond aux besoins suivants :
 - Enregistrement des Utilisateurs : Permettre aux individus de s'enregistrer en fournissant des informations personnelles et leurs coordonnées de géolocalisation. L'enregistrement peut se faire soit individuellement, soit par lot à travers l'importation de fichiers JSON.
